@@ -87,10 +87,10 @@ public class CalcBB {
 	public String bmi_checker() {
 		String bmi_result = this.bmi_result;
 		
-			if(result<18.5) {bmi_result="Niedowaga";}
-			if(result<24.9 && result>18.5) {bmi_result="Prawid³owa waga";}
-			if(result<29.9 && result>25) {bmi_result="Nadwaga";}
-			if(result>30) {bmi_result="Oty³oœæ";}
+			if(result<=18.5) {bmi_result="Niedowaga";}
+			if(result<=24.9 && result>18.5) {bmi_result="Prawid³owa waga";}
+			if(result<=29.9 && result>25) {bmi_result="Nadwaga";}
+			if(result>=30) {bmi_result="Oty³oœæ";}
 		
 		
 			ctx.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "BMI: " + bmi_result, null));

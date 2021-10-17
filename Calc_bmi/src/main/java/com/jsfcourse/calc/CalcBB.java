@@ -3,6 +3,8 @@ package com.jsfcourse.calc;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.primefaces.PrimeFaces;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
@@ -65,7 +67,7 @@ public class CalcBB {
 			double height = Double.parseDouble(this.height);
 			
 			result = round(weight/(height*height)*10000,2);
-			if(weight<=0 || height <=0 || weight>=250 || height>=250 || weight>height || result>50 || result<0) {ctx.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "B³êdnie podane parametry", null));return false;}
+			if(weight>height || result>50 || result<0) {ctx.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "B³êdnie podane parametry", null));return false;}
 			
 					
 			ctx.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Operacja wykonana poprawnie", null));
@@ -87,10 +89,10 @@ public class CalcBB {
 	public String bmi_checker() {
 		String bmi_result = this.bmi_result;
 		
-			if(result<=18.5) {bmi_result="Niedowaga";}
-			if(result<=24.9 && result>18.5) {bmi_result="Prawid³owa waga";}
-			if(result<=29.9 && result>25) {bmi_result="Nadwaga";}
-			if(result>=30) {bmi_result="Oty³oœæ";}
+			if(result<=18.50) {bmi_result="Niedowaga";}
+			if(result<=24.90 && result>18.50) {bmi_result="Prawid³owa waga";}
+			if(result<=29.90 && result>=24.90) {bmi_result="Nadwaga";}
+			if(result>29.90) {bmi_result="Oty³oœæ";}
 		
 		
 			ctx.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "BMI: " + bmi_result, null));
@@ -121,6 +123,10 @@ public class CalcBB {
 	public String info() {
 		return "info";
 	}
+	
+	public void reset() {
+        PrimeFaces.current().resetInputs("bla");
+    }
 
 	
 }

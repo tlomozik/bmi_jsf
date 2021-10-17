@@ -8,38 +8,54 @@
 <h:head>
 	<title>Kalkulator BMII</title>
 </h:head>
-<h:body>
-<p:panel header="Kalkulator BMI" style="margin:1em auto;" toggleable="true" closable="true" toggleSpeed="500"
+<h:body style="background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1); background-repeat: no-repeat; background-attachment: fixed;">
+
+
+
+<p:panel header="Kalkulator BMI" id="panel" style="margin:15em auto; width:40em;" toggleable="true" closable="true" toggleSpeed="500"
                 closeSpeed="500" widgetVar="panel">
 	
 
 	<h:form id="bla">
 	
-	 <h:panelGrid id="grid" columns="3" cellpadding="7">
+	 <h:panelGrid id="grid" columns="3" cellpadding="7" >
 	 
 	 <p:outputLabel for="weight" value="Waga: "/>
-  	 <p:inputText id="weight" value="#{calcBB.weight}" required="true" requiredMessage="Brak wagi"/>
+  	 <p:inputText id="weight" value="#{calcBB.weight}" required="true" requiredMessage="Brak wagi">
+  	 <f:validateDoubleRange minimum = "1" maximum = "250" />
+  	 <p:keyFilter mask="num"/>
+  	 </p:inputText>
   	 <p:message for="weight"/>	 
   		 
   		 
   	 <p:outputLabel for="height" value="Wzrost: "/>
-     <p:inputText id="height" value="#{calcBB.height}"  required="true" requiredMessage="Brak wzrostu"/>
+     <p:inputText id="height" value="#{calcBB.height}"  required="true" requiredMessage="Brak wzrostu">
+     <f:validateDoubleRange minimum = "1" maximum = "250" />
+     <p:keyFilter mask="num"/>
+  	 </p:inputText>
 	 <p:message for="height"/>	
 		
 
-		<p:commandButton value="Oblicz" action="#{calcBB.calc()}" update="@form"/>
-		<p:commandButton value="Oblicz (AJAX)" action="#{calcBB.calc_AJAX()}" update="msg"/>
-			
+		<p:commandButton value="Oblicz" styleClass="ui-button-raised ui-button-flat" action="#{calcBB.calc()}" update="@form"/>
+		<p:commandButton value="Oblicz (AJAX)" styleClass="ui-button-raised ui-button-flat" action="#{calcBB.calc_AJAX()}" update="msg"/>
 		<p:commandButton type="button" value="Info" styleClass="ui-button-raised ui-button-info ui-button-flat"  action="#{calcBB.info()}"/>
-
+		
+		<p:button type="button" value="Reset" styleClass="ui-button-raised ui-button-danger ui-button-flat" update="@form" />
+		
+		
 		
 	</h:panelGrid>	
 	
-	<p:messages id="msg" />
+	<p:messages id="msg"  closable="true">
+            <p:autoUpdate/>
+        </p:messages>
 	
 	
 	
 	</h:form>
+	
+	
 </p:panel>
+
 </h:body>
 </html>

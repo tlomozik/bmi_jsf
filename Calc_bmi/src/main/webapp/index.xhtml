@@ -20,19 +20,15 @@
 	
 	 <h:panelGrid id="grid" columns="3" cellpadding="7" >
 	 
-	 <p:outputLabel for="weight" value="Waga: "/>
-  	 <p:inputText id="weight" value="#{calcBB.weight}" required="true" requiredMessage="Brak wagi">
-  	 <f:validateDoubleRange minimum = "1" maximum = "250" />
-  	 <p:keyFilter mask="num"/>
-  	 </p:inputText>
+	 <p:outputLabel for="weight" value="Waga: "/> 
+  	 <p:inputNumber id="weight" value="#{calcBB.weight}" minValue="1"
+     maxValue="250" decimalPlaces="2" required="true" requiredMessage="Brak wagi" />
   	 <p:message for="weight"/>	 
   		 
   		 
   	 <p:outputLabel for="height" value="Wzrost: "/>
-     <p:inputText id="height" value="#{calcBB.height}"  required="true" requiredMessage="Brak wzrostu">
-     <f:validateDoubleRange minimum = "1" maximum = "250" />
-     <p:keyFilter mask="num"/>
-  	 </p:inputText>
+     <p:inputNumber id="height" value="#{calcBB.height}" minValue="1"
+     maxValue="250" decimalPlaces="2" required="true" requiredMessage="Brak wzrostu" />
 	 <p:message for="height"/>	
 		
 

@@ -20,27 +20,27 @@ public class CalcBB {
 	
 	
 	
-	private String weight;
-	private String height;
+	private Double weight;
+	private Double height;
 	private Double result;
 	private String bmi_result;
 	@Inject
 	FacesContext ctx;
 
-	public String getWeight() {
+	public Double getWeight() {
 		return weight;
 	}
 
-	public void setWeight(String weight) {
+	public void setWeight(Double weight) {
 		this.weight = weight;
 	}
 	
 	
-	public String getHeight() {
+	public Double getHeight() {
 		return height;
 	}
 
-	public void setHeight(String height) {
+	public void setHeight(Double height) {
 		this.height = height;
 	}
 
@@ -63,8 +63,8 @@ public class CalcBB {
 	public boolean doTheMath() {
 		try {
 			
-			double weight = Double.parseDouble(this.weight);
-			double height = Double.parseDouble(this.height);
+			double weight = this.weight;
+			double height = this.height;
 			
 			result = round(weight/(height*height)*10000,2);
 			if(weight>height || result>50 || result<0) {ctx.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "B³êdnie podane parametry", null));return false;}

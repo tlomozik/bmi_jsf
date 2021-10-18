@@ -124,9 +124,7 @@ public class CalcBB {
 		return "info";
 	}
 	
-	public void reset() {
-        PrimeFaces.current().resetInputs("bla");
-    }
+	
 
 	
 }
